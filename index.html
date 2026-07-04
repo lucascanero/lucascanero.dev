@@ -1,0 +1,1685 @@
+<!doctype html>
+<!--
+  lucascanero.dev — portfolio
+  Made with ❤️ by Lucas Cañero
+
+-->
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucas Cañero · DevOps Engineer</title>
+  <meta name="description"
+    content="Lucas Cañero — DevOps engineer with an audiovisual background. Multi-cloud infrastructure (AWS, Azure, GCP), Terraform, Kubernetes.">
+  <link rel="canonical" href="https://lucascanero.dev/">
+  <meta name="theme-color" content="#0b0c0e">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lucascanero.dev/">
+  <meta property="og:title" content="Lucas Cañero · DevOps Engineer">
+  <meta property="og:description"
+    content="Multi-cloud infrastructure with an artist's eye — AWS, Azure, GCP, Terraform, Kubernetes.">
+  <!-- <meta property="og:image" content="https://lucascanero.dev/og.png"> -->
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230b0c0e'/%3E%3Ctext%20x='12'%20y='44'%20font-family='monospace'%20font-size='30'%20fill='%23ffb454'%3E%3E_%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lucas Cañero",
+    "jobTitle": "DevOps Engineer",
+    "url": "https://lucascanero.dev",
+    "worksFor": { "@type": "Organization", "name": "Montblu", "url": "https://montblu.eu" },
+    "sameAs": [
+      "https://github.com/lucascanero",
+      "https://www.linkedin.com/in/lucas.canero",
+      "https://behance.net/lucascanero"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+   Tokens
+   ============================================================ */
+    :root,
+    :root[data-theme="dark"] {
+      --bg: #0b0c0e;
+      --bg-2: #0e1013;
+      --panel: #121418;
+      --line: #23262b;
+      --text: #ebe9e4;
+      --text-2: #a29d92;
+      --accent: #ffb454;
+      /* amber phosphor */
+      --accent-ink: #241300;
+      /* text on accent  */
+      --accent-dim: rgba(255, 180, 84, .12);
+      --accent-glow: rgba(255, 180, 84, .30);
+      --nav-bg: rgba(11, 12, 14, .78);
+      --shadow: 0 18px 50px rgba(0, 0, 0, .45);
+      --dot-r: #3d3f44;
+      --dot-y: #3d3f44;
+      --dot-g: #3d3f44;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f6f6f3;
+      --bg-2: #efeeea;
+      --panel: #ffffff;
+      --line: #e3e1da;
+      --text: #1a1814;
+      --text-2: #5f5b52;
+      --accent: #9a5b00;
+      --accent-ink: #ffffff;
+      --accent-dim: rgba(154, 91, 0, .10);
+      --accent-glow: rgba(154, 91, 0, .18);
+      --nav-bg: rgba(246, 246, 243, .82);
+      --shadow: 0 18px 50px rgba(35, 30, 20, .10);
+    }
+
+    /* ============================================================
+   Base
+   ============================================================ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    ul {
+      list-style: none
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--accent-ink)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px
+    }
+
+    .container {
+      max-width: 1020px;
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem)
+    }
+
+    .accent {
+      color: var(--accent)
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap
+    }
+
+    .skip {
+      position: fixed;
+      top: -48px;
+      left: 16px;
+      z-index: 99;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: .55rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: top .2s
+    }
+
+    .skip:focus {
+      top: 12px
+    }
+
+    /* ============================================================
+   Nav
+   ============================================================ */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      height: 64px;
+      background: var(--nav-bg);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-in {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem
+    }
+
+    .logo {
+      font-size: .95rem;
+      font-weight: 500;
+      letter-spacing: -.01em
+    }
+
+    .logo:hover .accent {
+      text-shadow: 0 0 12px var(--accent-glow)
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.4rem;
+      margin-left: auto
+    }
+
+    .nav-links a {
+      font-size: .92rem;
+      color: var(--text-2);
+      position: relative;
+      padding: .25rem 0;
+      transition: color .2s
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1.5px;
+      width: 0;
+      background: var(--accent);
+      transition: width .25s ease
+    }
+
+    .nav-links a:hover {
+      color: var(--text)
+    }
+
+    .nav-links a:hover::after {
+      width: 100%
+    }
+
+    .nav-ctrl {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-left: auto
+    }
+
+    @media (min-width:760px) {
+      .nav-links {
+        display: flex
+      }
+
+      .nav-ctrl {
+        margin-left: 0
+      }
+    }
+
+    .lang {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      font-size: .8rem
+    }
+
+    .lang-btn {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--text-2);
+      font-family: inherit;
+      font-size: inherit;
+      padding: .3rem .35rem;
+      border-radius: 6px;
+      transition: color .2s;
+    }
+
+    .lang-btn:hover {
+      color: var(--text)
+    }
+
+    .lang-btn.is-active {
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .lang-sep {
+      color: var(--line)
+    }
+
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      color: var(--text-2);
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      transition: color .2s, border-color .2s, transform .2s;
+    }
+
+    .icon-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px)
+    }
+
+    .icon-btn svg {
+      width: 17px;
+      height: 17px
+    }
+
+    [data-theme="dark"] .icon-sun {
+      display: block
+    }
+
+    [data-theme="dark"] .icon-moon {
+      display: none
+    }
+
+    [data-theme="light"] .icon-sun {
+      display: none
+    }
+
+    [data-theme="light"] .icon-moon {
+      display: block
+    }
+
+    /* ============================================================
+   Hero
+   ============================================================ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(7rem, 16vh, 10rem) 0 clamp(3.5rem, 8vh, 5.5rem)
+    }
+
+    .hero::before {
+      /* faint blueprint grid */
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .28;
+      -webkit-mask-image: radial-gradient(75% 60% at 50% 22%, #000 0%, transparent 100%);
+      mask-image: radial-gradient(75% 60% at 50% 22%, #000 0%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -220px;
+      right: -160px;
+      width: 560px;
+      height: 560px;
+      pointer-events: none;
+      background: radial-gradient(closest-side, var(--accent-dim), transparent 70%);
+      filter: blur(6px);
+      will-change: transform;
+    }
+
+    .hero-in {
+      position: relative
+    }
+
+    .hero-in>* {
+      opacity: 0;
+      animation: rise .7s cubic-bezier(.2, .7, .2, 1) forwards
+    }
+
+    .hero-in>*:nth-child(1) {
+      animation-delay: .05s
+    }
+
+    .hero-in>*:nth-child(2) {
+      animation-delay: .12s
+    }
+
+    .hero-in>*:nth-child(3) {
+      animation-delay: .2s
+    }
+
+    .hero-in>*:nth-child(4) {
+      animation-delay: .28s
+    }
+
+    .hero-in>*:nth-child(5) {
+      animation-delay: .4s
+    }
+
+    .hero-in>*:nth-child(6) {
+      animation-delay: .52s
+    }
+
+    .hero-in>*:nth-child(7) {
+      animation-delay: .62s
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .kicker {
+      font-size: .82rem;
+      color: var(--accent);
+      letter-spacing: .02em;
+      margin-bottom: 1rem
+    }
+
+    .hero-name {
+      font-size: clamp(2.7rem, 9vw, 5.4rem);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      margin-bottom: .6rem;
+    }
+
+    .hero-role {
+      font-size: clamp(.95rem, 2.4vw, 1.15rem);
+      color: var(--text-2);
+      margin-bottom: .5rem
+    }
+
+    .hero-role b {
+      color: var(--text);
+      font-weight: 500
+    }
+
+    .hero-sub {
+      max-width: 46ch;
+      color: var(--text-2);
+      margin-bottom: 2rem
+    }
+
+    /* Terminal — the signature. Always dark chrome, amber phosphor, faint scanlines. */
+    .term {
+      max-width: 640px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #0e0f12;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .6rem .9rem;
+      background: #15161a;
+      border-bottom: 1px solid #212227
+    }
+
+    .term-bar .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #3a3c41
+    }
+
+    .term-title {
+      margin-left: .4rem;
+      font-size: .72rem;
+      color: #7a766c;
+      font-family: 'JetBrains Mono', monospace
+    }
+
+    .term-body {
+      position: relative;
+      padding: 1.1rem 1.2rem 1.3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .86rem;
+      line-height: 1.85;
+      color: #c9c4b8;
+      min-height: 9.2em;
+    }
+
+    .term-body::after {
+      /* CRT scanlines */
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .03) 0 1px, transparent 1px 3px);
+    }
+
+    .t-prompt {
+      color: #ffb454;
+      text-shadow: 0 0 10px rgba(255, 180, 84, .28)
+    }
+
+    .t-out {
+      color: #a29d92
+    }
+
+    .t-tag {
+      color: #ffb454;
+      text-shadow: 0 0 10px rgba(255, 180, 84, .35)
+    }
+
+    .t-caret {
+      display: inline-block;
+      width: .58ch;
+      height: 1.05em;
+      vertical-align: text-bottom;
+      background: #ffb454;
+      box-shadow: 0 0 10px rgba(255, 180, 84, .5);
+      animation: blink 1.05s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-bottom: 2.6rem
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .72rem 1.35rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-weight: 500;
+      font-size: .95rem;
+      color: var(--text);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px var(--accent-dim)
+    }
+
+    .btn:active {
+      transform: translateY(0)
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 700
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 28px var(--accent-glow)
+    }
+
+    .glyph {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72em;
+      font-weight: 500;
+      border: 1px solid currentColor;
+      border-radius: 6px;
+      padding: .14em .38em;
+      opacity: .85;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem 3.2rem
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column
+    }
+
+    .stat-num {
+      font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      letter-spacing: -.02em
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      color: var(--text-2);
+      margin-top: .25rem
+    }
+
+    /* ============================================================
+   Sections
+   ============================================================ */
+    .sec {
+      padding: clamp(4.5rem, 11vh, 7.5rem) 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .sec-head {
+      margin-bottom: 2.6rem
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .5rem
+    }
+
+    .sec-title {
+      font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -.02em
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+      transition-delay: calc(var(--i, 0)*95ms)
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    /* About */
+    .about-cols p {
+      max-width: 66ch;
+      color: var(--text-2);
+      margin-bottom: 1.15rem
+    }
+
+    .about-cols p:last-child {
+      margin-bottom: 0
+    }
+
+    .about-cols strong {
+      color: var(--text);
+      font-weight: 500
+    }
+
+    /* Experience — vertical timeline */
+    .timeline {
+      position: relative;
+      padding-left: 1.9rem
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--line)
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 2.8rem
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: -1.9rem;
+      top: .42rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 4px var(--bg), 0 0 12px var(--accent-glow);
+    }
+
+    .tl-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .2rem
+    }
+
+    .tl-head h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: -.01em
+    }
+
+    .tl-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .66rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: .14rem .55rem;
+      opacity: .9;
+    }
+
+    .tl-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .76rem;
+      color: var(--text-2);
+      margin-bottom: .8rem
+    }
+
+    .tl-item ul {
+      color: var(--text-2);
+      max-width: 68ch
+    }
+
+    .tl-item li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: .45rem
+    }
+
+    .tl-item li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: .75
+    }
+
+    /* Projects */
+    .proj-sub {
+      color: var(--text-2);
+      max-width: 56ch;
+      margin-top: .6rem
+    }
+
+    .api-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      color: var(--text-2);
+      margin-top: .6rem
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      gap: 1.15rem
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.35rem 1.35rem 1.15rem;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      will-change: transform;
+    }
+
+    .card::after {
+      /* cursor-follow glare */
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(230px circle at var(--mx, 50%) var(--my, 30%), var(--accent-dim), transparent 65%);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px var(--accent-dim)
+    }
+
+    .card:hover::after {
+      opacity: 1
+    }
+
+    @media (hover:hover) {
+      .card:hover {
+        transform: translateY(-4px)
+      }
+    }
+
+    .card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--accent);
+      word-break: break-word
+    }
+
+    .card-desc {
+      font-size: .92rem;
+      color: var(--text-2);
+      flex-grow: 1
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem
+    }
+
+    .tags li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .66rem;
+      color: var(--text-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .16rem .55rem;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: .2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--text-2);
+    }
+
+    .lang-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .stars {
+      opacity: .9
+    }
+
+    .card-arrow {
+      margin-left: auto;
+      color: var(--accent);
+      transition: transform .2s ease
+    }
+
+    .card:hover .card-arrow {
+      transform: translate(3px, -3px)
+    }
+
+    .proj-more {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      margin-top: 1.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      color: var(--accent)
+    }
+
+    .proj-more:hover {
+      text-shadow: 0 0 12px var(--accent-glow)
+    }
+
+    /* Skills */
+    .sk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+      gap: 1.6rem 2rem
+    }
+
+    .sk-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--accent);
+      margin-bottom: .7rem
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem
+    }
+
+    .chips li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .74rem;
+      color: var(--text-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .3rem .7rem;
+      transition: color .2s, border-color .2s, transform .2s;
+    }
+
+    .chips li:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      transform: translateY(-1px)
+    }
+
+    /* Contact */
+    .contact-h {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin-bottom: .8rem
+    }
+
+    .contact-sub {
+      color: var(--text-2);
+      max-width: 52ch;
+      margin-bottom: 2.2rem
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 2.4rem
+    }
+
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem 1.6rem;
+      align-items: center;
+      font-size: .76rem;
+      color: var(--text-2)
+    }
+
+    .foot a {
+      color: var(--text-2);
+      transition: color .2s
+    }
+
+    .foot a:hover {
+      color: var(--accent)
+    }
+
+    .foot-made {
+      margin-left: auto
+    }
+
+    @media (max-width:560px) {
+      .foot-made {
+        margin-left: 0
+      }
+    }
+
+    /* ============================================================
+   Reduced motion
+   ============================================================ */
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .hero-in>* {
+        opacity: 1;
+        transform: none
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+
+      .t-caret {
+        animation: none !important
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="skip" href="#about">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-in">
+      <a class="logo mono" href="#top">lucascanero<span class="accent">.dev</span></a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#experience" data-i18n="nav.exp">Experience</a>
+        <a href="#projects" data-i18n="nav.proj">Projects</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="nav-ctrl">
+        <div class="lang mono" role="group" aria-label="Language / Idioma">
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button class="lang-btn" type="button" data-lang="pt">PT</button>
+        </div>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+              d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-in">
+        <p class="kicker mono" data-i18n="hero.kicker">~/ devops × multimedia</p>
+        <h1 class="hero-name">Lucas Cañero<span class="accent">.</span></h1>
+        <p class="hero-role mono"><b data-i18n="hero.role">DevOps Engineer</b></p>
+        <p class="hero-sub" data-i18n="hero.sub">Multi-cloud infrastructure at Montblu — currently building for
+          FilingRamp.</p>
+
+        <div class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="term-title">lucas@lucascanero.dev — zsh</span>
+          </div>
+          <div class="term-body">
+            <div><span class="t-prompt">$</span> <span id="tCmd1"></span></div>
+            <div class="t-out" id="tOut1"></div>
+            <div id="tLine2" hidden><span class="t-prompt">$</span> <span id="tCmd2"></span></div>
+            <div id="tOut2" hidden><span class="t-tag" id="tTag"></span><span class="t-caret"></span></div>
+          </div>
+        </div>
+        <p class="sr-only" data-i18n="term.tagline">Infrastructure with an engineer's rigor and an artist's eye.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects" data-i18n="hero.cta1">View projects</a>
+          <a class="btn" href="#contact" data-i18n="hero.cta2">Get in touch</a>
+        </div>
+
+        <div class="stats" id="stats">
+          <div class="stat"><span class="stat-num" data-count="years">0</span><span class="stat-label"
+              data-i18n="stat.years">years in DevOps</span></div>
+          <div class="stat"><span class="stat-num" data-count="3">0</span><span class="stat-label"
+              data-i18n="stat.clouds">cloud platforms</span></div>
+          <div class="stat"><span class="stat-num" data-count="projects">0</span><span class="stat-label"
+              data-i18n="stat.projects">open-source projects</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="sec" id="about">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow">~/about</span>
+          <h2 class="sec-title" data-i18n="sec.about">About</h2>
+        </header>
+        <div class="about-cols">
+          <p class="reveal" style="--i:0" data-i18n="about.p1">I started on the creative side of technology — motion
+            design, 3D and sound — studying Audiovisual &amp; Multimedia at the Polytechnic Institute of Beja. Somewhere
+            between rendering frames and mixing audio, I got more interested in the systems underneath: the pipelines,
+            the servers, the automation that makes digital work possible.</p>
+          <p class="reveal" style="--i:1" data-i18n="about.p2">Since 2022 I've been a DevOps engineer at Montblu, a
+            consultancy that runs infrastructure for other companies. My main client today is FilingRamp, where I design
+            and operate AWS infrastructure end to end — Terraform, Kubernetes (EKS), CI/CD and observability — while
+            also working across Azure and Google Cloud on other projects.</p>
+          <p class="reveal" style="--i:2" data-i18n="about.p3">The two backgrounds aren't separate. Design taught me
+            that the best systems are the ones you don't notice — and I bring that eye to everything from dashboards to
+            internal tooling. Long term, I want to build scalable, reliable cloud infrastructure that enables teams to move faster..</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="sec" id="experience">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow">~/experience</span>
+          <h2 class="sec-title" data-i18n="sec.exp">Experience</h2>
+        </header>
+
+        <div class="timeline">
+          <article class="tl-item reveal" style="--i:0">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-head">
+              <h3 data-i18n="exp1.title">DevOps Engineer · Montblu</h3>
+              <span class="tl-tag" data-i18n="exp1.tag">current</span>
+            </div>
+            <p class="tl-meta" data-i18n="exp1.meta">Jun 2022 — Present · Remote</p>
+            <ul>
+              <li data-i18n="exp1.b1">Design and operate multi-cloud infrastructure (AWS, Azure, Google Cloud) with
+                Terraform for the consultancy's clients.</li>
+              <li data-i18n="exp1.b2">Co-maintain Terrabutler, Montblu's open-source CLI for orchestrating
+                multi-environment Terraform projects.</li>
+              <li data-i18n="exp1.b3">Run Kubernetes (EKS) workloads with monitoring on Prometheus and Grafana.</li>
+            </ul>
+          </article>
+
+          <article class="tl-item reveal" style="--i:1">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-head">
+              <h3 data-i18n="exp2.title">DevOps Team · FilingRamp</h3>
+              <span class="tl-tag" data-i18n="exp2.tag">client</span>
+            </div>
+            <p class="tl-meta" data-i18n="exp2.meta">Jun 2022 — Present · Client via Montblu</p>
+            <ul>
+              <li data-i18n="exp2.b1">Own AWS infrastructure across multiple environments — from networking and
+                CloudFront delivery to IAM.</li>
+              <li data-i18n="exp2.b2">Built an event-driven email ingestion pipeline (SES → S3 → SNS), fully defined in
+                Terraform.</li>
+              <li data-i18n="exp2.b3">Keep CI/CD pipelines and environment configuration reliable as the product and the
+                team grow.</li>
+            </ul>
+          </article>
+
+          <article class="tl-item reveal" style="--i:2">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-head">
+              <h3 data-i18n="exp3.title">BSc Audiovisual &amp; Multimedia · IP Beja</h3>
+              <span class="tl-tag" data-i18n="exp3.tag">education</span>
+            </div>
+            <p class="tl-meta" data-i18n="exp3.meta">Sep 2022 — Jun 2025 · Beja, Portugal</p>
+            <ul>
+              <li data-i18n="exp3.b1">Motion design, 3D animation (Blender), audio production and multimedia for digital
+                platforms.</li>
+              <li data-i18n="exp3.b2">The creative foundation that still shapes how I approach infrastructure and
+                tooling.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="sec" id="projects">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow">~/projects</span>
+          <h2 class="sec-title" data-i18n="sec.proj">Projects</h2>
+          <p class="proj-sub" data-i18n="proj.sub">Loaded live from the GitHub API — this section keeps itself up to
+            date.</p>
+          <p class="api-note" id="apiNote" hidden data-i18n="proj.note">GitHub API unreachable — showing cached info.
+          </p>
+        </header>
+
+        <div class="cards reveal" id="projGrid">
+          <noscript>
+            <ul class="mono">
+              <li><a href="https://github.com/montblu/terrabutler">montblu/terrabutler</a></li>
+              <li><a href="https://github.com/lucascanero/terrabutler-aws-template">terrabutler-aws-template</a></li>
+              <li><a href="https://github.com/lucascanero/edreams-flex-scanner">edreams-flex-scanner</a></li>
+              <li><a href="https://github.com/lucascanero/win95-icon-converter">win95-icon-converter</a></li>
+            </ul>
+          </noscript>
+        </div>
+
+        <a class="proj-more reveal" href="https://github.com/lucascanero?tab=repositories" target="_blank"
+          rel="noopener"><span data-i18n="proj.more">More on GitHub</span> ↗</a>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="sec" id="skills">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow">~/skills</span>
+          <h2 class="sec-title" data-i18n="sec.skills">Skills</h2>
+        </header>
+
+        <div class="sk-grid">
+          <div class="sk-group reveal" style="--i:0">
+            <h3 class="sk-title" data-i18n="sk.cloud">Cloud</h3>
+            <ul class="chips">
+              <li>AWS</li>
+              <li>Azure</li>
+              <li>Google Cloud</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:1">
+            <h3 class="sk-title" data-i18n="sk.iac">Infrastructure as Code</h3>
+            <ul class="chips">
+              <li>Terraform</li>
+              <li>Terrabutler</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:2">
+            <h3 class="sk-title" data-i18n="sk.cont">Containers &amp; Orchestration</h3>
+            <ul class="chips">
+              <li>Docker</li>
+              <li>Kubernetes</li>
+              <li>Amazon EKS</li>
+              <li>Google GKE</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:3">
+            <h3 class="sk-title" data-i18n="sk.cicd">CI/CD &amp; Automation</h3>
+            <ul class="chips">
+              <li>GitHub Actions</li>
+              <li>Octopus Deploy</li>
+              <li>Bash</li>
+              <li>Python</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:5">
+            <h3 class="sk-title">Networking &amp; Security</h3>
+            <ul class="chips">
+              <li>VPC Peering</li>
+              <li>Security Groups</li>
+              <li>IAM</li>
+              <li>TLS / ACM</li>
+              <li>Route53</li>
+              <li>AWS WAF</li>
+              <li>Network Policies</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:6">
+            <h3 class="sk-title">Data &amp; Messaging</h3>
+            <ul class="chips">
+              <li>PostgreSQL</li>
+              <li>DuckDB</li>
+              <li>Apache Kafka</li>
+              <li>Strimzi</li>
+              <li>S3</li>
+            </ul>
+          </div>
+          <div class="sk-group reveal" style="--i:4">
+            <h3 class="sk-title" data-i18n="sk.obs">Observability</h3>
+            <ul class="chips">
+              <li>VictoriaMetrics</li>
+              <li>OpenTelemetry</li>
+              <li>Prometheus</li>
+              <li>Grafana</li>
+              <li>CloudWatch</li>
+            </ul>
+          </div>
+
+          <div class="sk-group reveal" style="--i:5">
+            <h3 class="sk-title" data-i18n="sk.mm">Multimedia &amp; Design</h3>
+            <ul class="chips">
+              <li>After Effects</li>
+              <li>Premiere</li>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>Reaper</li>
+              <li>Blender</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="sec" id="contact">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow">~/contact</span>
+          <h2 class="contact-h" data-i18n="contact.h">Let's build something.</h2>
+          <p class="contact-sub" data-i18n="contact.sub">Open to DevOps consulting and infrastructure work — the fastest
+            ways to reach me:</p>
+        </header>
+
+        <div class="contact-actions reveal">
+          <a class="btn btn-primary" href="mailto:lucas.canero14@gmail.com"><span class="glyph">@</span>Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/lucascanero/" target="_blank" rel="noopener"><span
+              class="glyph">in</span>LinkedIn</a>
+          <a class="btn" href="https://github.com/lucascanero" target="_blank" rel="noopener"><span
+              class="glyph">gh</span>GitHub</a>
+          <!-- TODO:MALT — confirmar URL real do perfil Malt -->
+          <a class="btn" href="https://www.malt.com/profile/lucascanero" target="_blank" rel="noopener"><span
+              class="glyph">M</span>Malt</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot mono">
+      <span>© <span id="year">2026</span> Lucas Cañero</span>
+      <a href="https://behance.net/lucascanero" target="_blank" rel="noopener">Behance ↗</a>
+      <span class="foot-made" data-i18n="footer.made">designed &amp; built from scratch</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var d = document;
+      function $(s, c) { return (c || d).querySelector(s); }
+      function $$(s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); }
+
+      var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      /* ---------------- i18n ---------------- */
+      var I18N = {
+        en: {
+          'meta.desc': "Lucas Cañero — DevOps engineer with an audiovisual background. Multi-cloud infrastructure (AWS, Azure, GCP), Terraform, Kubernetes.",
+          'aria.theme': "Toggle theme",
+          'nav.about': "About", 'nav.exp': "Experience", 'nav.proj': "Projects", 'nav.skills': "Skills", 'nav.contact': "Contact",
+          'hero.kicker': "~/ devops × multimedia",
+          'hero.role': "DevOps Engineer",
+          'hero.sub': "Multi-cloud infrastructure at Montblu — currently building for FilingRamp.",
+          'hero.cta1': "View projects", 'hero.cta2': "Get in touch",
+          'stat.years': "years in DevOps", 'stat.clouds': "cloud platforms", 'stat.projects': "open-source projects",
+          'term.whoami': "lucas.canero — devops engineer @ montblu",
+          'term.tagline': "Scalable Infrastructure, Built Right.",
+          'sec.about': "About", 'sec.exp': "Experience", 'sec.proj': "Projects", 'sec.skills': "Skills",
+          'about.p1': "I started on the creative side of technology — motion design, 3D and sound — studying Audiovisual & Multimedia at the Polytechnic Institute of Beja. Somewhere between rendering frames and mixing audio, I got more interested in the systems underneath: the pipelines, the servers, the automation that makes digital work possible.",
+          'about.p2': "Since 2022 I've been a DevOps engineer at Montblu, a consultancy that runs infrastructure for other companies. My main client today is FilingRamp, where I design and operate AWS infrastructure end to end — Terraform, Kubernetes (EKS), CI/CD and observability — while also working across Azure and Google Cloud on other projects.",
+          'about.p3': "The two backgrounds aren't separate. Design taught me that the best systems are the ones you don't notice — and I bring that eye to everything from dashboards to internal tooling. Long term, I'm drawn to the space where infrastructure meets interactive art.",
+          'exp1.title': "DevOps Engineer · Montblu", 'exp1.tag': "current", 'exp2.tag': "client",
+          'exp1.meta': "Jun 2022 — Present · Remote",
+          'exp1.b1': "Design and operate multi-cloud infrastructure (AWS, Azure, Google Cloud) with Terraform and Terrabutler.",
+          'exp1.b2': "Co-maintain Terrabutler, Montblu's open-source CLI for orchestrating multi-environment Terraform projects.",
+          'exp1.b3': "Kubernetes (EKS) workloads with monitoring on Prometheus and Grafana.",
+          'exp2.title': "DevOps Team · FilingRamp",
+          'exp2.meta': "Jun 2022 — Present · Client via Montblu",
+          'exp2.b1': "Own AWS infrastructure across multiple environments — from networking and CloudFront delivery to IAM.",
+          'exp2.b2': "Automated application deployments and release management using Octopus Deploy and more.",
+          'exp2.b3': "Keep CI/CD pipelines and environment configuration reliable as the product and the team grow.",
+          'exp3.title': "BSc Audiovisual & Multimedia · IP Beja", 'exp3.tag': "education",
+          'exp3.meta': "Sep 2022 — Jun 2025 · Beja, Portugal",
+          'exp3.b1': "Motion design, 3D animation (Blender), audio production and multimedia for digital platforms.",
+          'exp3.b2': "The creative foundation that still shapes how I approach infrastructure and tooling.",
+          'proj.sub': "Loaded live from the GitHub API — this section keeps itself up to date.",
+          'proj.note': "GitHub API unreachable — showing cached info.",
+          'proj.more': "More on GitHub",
+          'card.open': "open repository",
+          'sk.cloud': "Cloud", 'sk.iac': "Infrastructure as Code", 'sk.cont': "Containers & Orchestration",
+          'sk.cicd': "CI/CD & Automation", 'sk.obs': "Observability", 'sk.mm': "Multimedia & Design",
+          'contact.h': "Let's build something.",
+          'contact.sub': "Open to DevOps consulting and infrastructure work — the fastest ways to reach me:",
+          'footer.made': "designed & built from scratch"
+        },
+        pt: {
+          'meta.desc': "Lucas Cañero — engenheiro DevOps com formação em audiovisual. Infraestrutura multi-cloud (AWS, Azure, GCP), Terraform, Kubernetes.",
+          'aria.theme': "Alternar tema",
+          'nav.about': "Sobre", 'nav.exp': "Experiência", 'nav.proj': "Projetos", 'nav.skills': "Skills", 'nav.contact': "Contacto",
+          'hero.kicker': "~/ devops × multimédia",
+          'hero.role': "DevOps Engineer",
+          'hero.sub': "Infraestrutura multi-cloud na Montblu — atualmente a construir para a FilingRamp.",
+          'hero.cta1': "Ver projetos", 'hero.cta2': "Falar comigo",
+          'stat.years': "anos em DevOps", 'stat.clouds': "plataformas cloud", 'stat.projects': "projetos open-source",
+          'term.whoami': "lucas.canero — engenheiro devops @ montblu",
+          'term.tagline': "Infraestrutura com rigor de engenheiro e olhar de artista.",
+          'sec.about': "Sobre", 'sec.exp': "Experiência", 'sec.proj': "Projetos", 'sec.skills': "Skills",
+          'about.p1': "Comecei no lado criativo da tecnologia — motion design, 3D e som — na licenciatura em Audiovisual e Multimédia do Instituto Politécnico de Beja. Algures entre renders e misturas de áudio, comecei a interessar-me mais pelos sistemas por baixo: os pipelines, os servidores, a automação que faz o digital funcionar.",
+          'about.p2': "Desde 2022 sou engenheiro DevOps na Montblu, uma consultora que opera infraestrutura para outras empresas. O meu principal cliente atual é a FilingRamp, onde desenho e opero infraestrutura AWS de ponta a ponta — Terraform, Kubernetes (EKS), CI/CD e observabilidade — trabalhando também com Azure e Google Cloud noutros projetos.",
+          'about.p3': "Os dois percursos não estão separados. O design ensinou-me que os melhores sistemas são os que não se notam — e trago esse olhar para tudo, dos dashboards às ferramentas internas. A prazo, interessa-me o espaço onde a infraestrutura encontra a arte interativa.",
+          'exp1.title': "DevOps Engineer · Montblu", 'exp1.tag': "atual", 'exp2.tag': "cliente",
+          'exp1.meta': "Jun 2022 — Presente · Remoto",
+          'exp1.b1': "Desenho e operação de infraestrutura multi-cloud (AWS, Azure, Google Cloud) com Terraform para os clientes da consultora.",
+          'exp1.b2': "Co-manutenção do Terrabutler, a CLI open-source da Montblu para orquestrar projetos Terraform multi-ambiente.",
+          'exp1.b3': "Operação de workloads Kubernetes (EKS) com monitorização em Prometheus e Grafana.",
+          'exp2.title': "Equipa DevOps · FilingRamp",
+          'exp2.meta': "Jun 2022 — Presente · Cliente via Montblu",
+          'exp2.b1': "Responsável pela infraestrutura AWS em múltiplos ambientes — de networking e distribuição CloudFront a IAM.",
+          'exp2.b2': "Pipeline de ingestão de email orientado a eventos (SES → S3 → SNS), totalmente definido em Terraform.",
+          'exp2.b3': "Fiabilidade dos pipelines CI/CD e da configuração de ambientes à medida que o produto e a equipa crescem.",
+          'exp3.title': "Licenciatura em Audiovisual e Multimédia · IP Beja", 'exp3.tag': "formação",
+          'exp3.meta': "Set 2022 — Jun 2025 · Beja, Portugal",
+          'exp3.b1': "Motion design, animação 3D (Blender), produção áudio e multimédia para plataformas digitais.",
+          'exp3.b2': "A base criativa que ainda hoje molda a forma como abordo infraestrutura e ferramentas.",
+          'proj.sub': "Carregado em direto da API do GitHub — esta secção mantém-se atualizada sozinha.",
+          'proj.note': "API do GitHub indisponível — a mostrar informação em cache.",
+          'proj.more': "Mais no GitHub",
+          'card.open': "abrir repositório",
+          'sk.cloud': "Cloud", 'sk.iac': "Infraestrutura como Código", 'sk.cont': "Containers & Orquestração",
+          'sk.cicd': "CI/CD & Automação", 'sk.obs': "Observabilidade", 'sk.mm': "Multimédia & Design",
+          'contact.h': "Vamos construir alguma coisa.",
+          'contact.sub': "Disponível para consultoria DevOps e projetos de infraestrutura — as formas mais rápidas de me contactar:",
+          'footer.made': "desenhado e construído de raiz"
+        }
+      };
+
+      /* ---------------- Repos (fallback estático; hidratado pela API) ---------------- */
+      var REPOS = [
+        {
+          owner: 'montblu', name: 'terrabutler', langName: 'Python', tags: ['Python', 'Terraform', 'CLI'],
+          desc: {
+            en: "CLI that orchestrates multi-environment Terraform projects — init, plan and apply across every environment from one place.",
+            pt: "CLI que orquestra projetos Terraform multi-ambiente — init, plan e apply em todos os ambientes a partir de um só sítio."
+          }
+        },
+        {
+          owner: 'lucascanero', name: 'terrabutler-aws-template', langName: 'HCL', tags: ['Terraform', 'AWS', 'Template'],
+          desc: {
+            en: "Ready-to-use AWS foundation template for projects managed with Terrabutler.",
+            pt: "Template AWS pronto a usar para projetos geridos com o Terrabutler."
+          }
+        },
+        {
+          owner: 'lucascanero', name: 'edreams-flex-scanner', langName: 'JavaScript', tags: ['JavaScript', 'Chrome Extension'],
+          desc: {
+            en: "Chrome extension that scans flexible date ranges on eDreams to surface the cheapest flight combinations.",
+            pt: "Extensão Chrome que percorre intervalos de datas flexíveis no eDreams para encontrar as combinações de voos mais baratas."
+          }
+        },
+        {
+          owner: 'lucascanero', name: 'win95-icon-converter', langName: 'Python', tags: ['Retro', 'Tooling'],
+          desc: {
+            en: "Small retro tool that converts modern images into Windows 95-style icons.",
+            pt: "Pequena ferramenta retro que converte imagens modernas em ícones ao estilo Windows 95."
+          }
+        }
+      ];
+
+      var lang = 'en';
+      var typingDone = false;
+      var animToken = 0;
+
+      /* ---------------- Theme ---------------- */
+      var themeBtn = $('#themeBtn');
+      function setTheme(t) {
+        d.documentElement.setAttribute('data-theme', t);
+        var m = $('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'dark' ? '#0b0c0e' : '#f6f6f3');
+      }
+      themeBtn.addEventListener('click', function () {
+        setTheme(d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      /* ---------------- Language ---------------- */
+      function applyLang(l) {
+        lang = l;
+        d.documentElement.lang = l === 'pt' ? 'pt' : 'en';
+        var dict = I18N[l];
+        $$('[data-i18n]').forEach(function (el) {
+          var k = el.getAttribute('data-i18n');
+          if (dict[k] != null) el.textContent = dict[k];
+        });
+        var md = $('meta[name="description"]');
+        if (md) md.setAttribute('content', dict['meta.desc']);
+        themeBtn.setAttribute('aria-label', dict['aria.theme']);
+        $$('.lang-btn').forEach(function (b) {
+          b.classList.toggle('is-active', b.getAttribute('data-lang') === l);
+        });
+      }
+      $$('.lang-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var l = b.getAttribute('data-lang');
+          if (l !== lang) { applyLang(l); renderProjects(); syncTerminal(); }
+        });
+      });
+
+      /* ---------------- Terminal typing (hero signature) ---------------- */
+      var T = { cmd1: $('#tCmd1'), out1: $('#tOut1'), line2: $('#tLine2'), cmd2: $('#tCmd2'), out2: $('#tOut2'), tag: $('#tTag') };
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+      function typeInto(el, txt, tok, speed) {
+        var i = 0;
+        return new Promise(function (resolve) {
+          (function tick() {
+            if (tok !== animToken) { resolve(false); return; }
+            if (i >= txt.length) { resolve(true); return; }
+            el.textContent += txt.charAt(i++);
+            setTimeout(tick, speed);
+          })();
+        });
+      }
+      function fillTerminal() {
+        var t = I18N[lang];
+        T.cmd1.textContent = 'whoami';
+        T.out1.textContent = t['term.whoami'];
+        T.line2.hidden = false;
+        T.cmd2.textContent = 'cat tagline.txt';
+        T.out2.hidden = false;
+        T.tag.textContent = t['term.tagline'];
+        typingDone = true;
+      }
+      function runTerminal() {
+        var tok = ++animToken;
+        if (!motionOK) { fillTerminal(); return; }
+        T.cmd1.textContent = ''; T.out1.textContent = ''; T.cmd2.textContent = ''; T.tag.textContent = '';
+        T.line2.hidden = true; T.out2.hidden = true;
+        sleep(400).then(function () { return typeInto(T.cmd1, 'whoami', tok, 55); })
+          .then(function (ok) {
+            if (!ok) return Promise.reject();
+            return sleep(260).then(function () {
+              if (tok !== animToken) return Promise.reject();
+              T.out1.textContent = I18N[lang]['term.whoami'];
+              return sleep(500);
+            });
+          })
+          .then(function () {
+            if (tok !== animToken) return Promise.reject();
+            T.line2.hidden = false;
+            return typeInto(T.cmd2, 'cat tagline.txt', tok, 55);
+          })
+          .then(function (ok) {
+            if (!ok) return Promise.reject();
+            return sleep(300).then(function () {
+              if (tok !== animToken) return Promise.reject();
+              T.out2.hidden = false;
+              return typeInto(T.tag, I18N[lang]['term.tagline'], tok, 26);
+            });
+          })
+          .then(function (ok) { if (ok) typingDone = true; })
+          .catch(function () { /* cancelado por mudança de idioma */ });
+      }
+      function syncTerminal() {
+        if (typingDone) {
+          T.out1.textContent = I18N[lang]['term.whoami'];
+          T.tag.textContent = I18N[lang]['term.tagline'];
+        } else {
+          animToken++;
+          fillTerminal();
+        }
+      }
+
+      /* ---------------- Projects (fallback + hidratação GitHub API) ---------------- */
+      var grid = $('#projGrid');
+      var LANG_COLORS = { 'Python': '#3572A5', 'HCL': '#844FBA', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 'Shell': '#89e051', 'Go': '#00ADD8', 'Lua': '#000080', 'Ruby': '#701516' };
+      function langDot(name) { return LANG_COLORS[name] || 'var(--accent)'; }
+      function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+      function renderProjects() {
+        var html = REPOS.map(function (r) {
+          var api = r.api || {};
+          var desc = (api.description && api.description.trim()) || r.desc[lang];
+          var lg = api.language || r.langName;
+          var stars = api.stargazers_count || 0;
+          var starHtml = stars > 0 ? '<span class="stars">★ ' + stars + '</span>' : '';
+          var title = (r.owner !== 'lucascanero' ? r.owner + '/' : '') + r.name;
+          return '<a class="card" href="https://github.com/' + r.owner + '/' + r.name + '" target="_blank" rel="noopener" aria-label="' + esc(title) + ' — ' + I18N[lang]['card.open'] + '">'
+            + '<h3>' + esc(title) + '</h3>'
+            + '<p class="card-desc">' + esc(desc) + '</p>'
+            + '<ul class="tags">' + r.tags.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>'
+            + '<div class="card-meta"><span class="lang-dot" style="background:' + langDot(lg) + '"></span><span>' + esc(lg) + '</span>' + starHtml + '<span class="card-arrow" aria-hidden="true">↗</span></div>'
+            + '</a>';
+        }).join('');
+        var ns = grid.querySelector('noscript');
+        grid.innerHTML = (ns ? ns.outerHTML : '') + html;
+        if (finePointer && motionOK) attachTilt();
+      }
+      function hydrate() {
+        if (!('fetch' in window)) return;
+        var ctl = ('AbortController' in window) ? new AbortController() : null;
+        var to = ctl ? setTimeout(function () { ctl.abort(); }, 6500) : null;
+        Promise.allSettled(REPOS.map(function (r) {
+          return fetch('https://api.github.com/repos/' + r.owner + '/' + r.name, {
+            signal: ctl ? ctl.signal : undefined,
+            headers: { 'Accept': 'application/vnd.github+json' }
+          }).then(function (res) { return res.ok ? res.json() : Promise.reject(new Error(String(res.status))); });
+        })).then(function (results) {
+          if (to) clearTimeout(to);
+          var ok = false;
+          results.forEach(function (res, i) {
+            if (res.status === 'fulfilled') { REPOS[i].api = res.value; ok = true; }
+          });
+          if (ok) { renderProjects(); }
+          else { var n = $('#apiNote'); if (n) n.hidden = false; }
+        });
+      }
+
+      /* ---------------- Tilt 3D subtil + glare (cards) ---------------- */
+      function attachTilt() {
+        $$('.card', grid).forEach(function (card) {
+          if (card.getAttribute('data-tilt')) return;
+          card.setAttribute('data-tilt', '1');
+          var MAX = 5;
+          card.addEventListener('pointermove', function (e) {
+            var r = card.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width;
+            var y = (e.clientY - r.top) / r.height;
+            card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+            card.style.transform = 'perspective(700px) rotateX(' + ((0.5 - y) * 2 * MAX).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 2 * MAX).toFixed(2) + 'deg) translateY(-3px)';
+          });
+          card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+        });
+      }
+
+      /* ---------------- Reveal ao scroll ---------------- */
+      var io = null;
+      if ('IntersectionObserver' in window && motionOK) {
+        io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+      }
+      $$('.reveal').forEach(function (el) {
+        if (io) io.observe(el); else el.classList.add('in');
+      });
+
+      /* ---------------- Contadores animados ---------------- */
+      var statsEl = $('#stats');
+      var counted = false;
+      function yearsSince() {
+        var start = new Date('2022-06-01T00:00:00Z').getTime();
+        return Math.max(1, Math.floor((Date.now() - start) / 31557600000));
+      }
+      function statTargets() {
+        return $$('.stat-num', statsEl).map(function (el) {
+          var v = el.getAttribute('data-count');
+          if (v === 'years') return yearsSince();
+          if (v === 'projects') return REPOS.length;
+          return parseInt(v, 10) || 0;
+        });
+      }
+      function runCounters() {
+        if (counted) return;
+        counted = true;
+        var nums = $$('.stat-num', statsEl);
+        var tg = statTargets();
+        if (!motionOK) { nums.forEach(function (el, i) { el.textContent = tg[i]; }); return; }
+        var t0 = performance.now(), dur = 1300;
+        (function step(t) {
+          var p = Math.min(1, (t - t0) / dur);
+          var e = 1 - Math.pow(1 - p, 3);
+          nums.forEach(function (el, i) { el.textContent = Math.round(tg[i] * e); });
+          if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      }
+      if (statsEl) {
+        if ('IntersectionObserver' in window && motionOK) {
+          var so = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { runCounters(); so.disconnect(); } });
+          }, { threshold: .4 });
+          so.observe(statsEl);
+        } else { runCounters(); }
+      }
+
+      /* ---------------- Parallax subtil do glow do hero ---------------- */
+      var glow = $('.hero-glow');
+      if (glow && motionOK) {
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            glow.style.transform = 'translate3d(0,' + (window.scrollY * 0.12).toFixed(1) + 'px,0)';
+            ticking = false;
+          });
+        }, { passive: true });
+      }
+
+      /* ---------------- Init ---------------- */
+      $('#year').textContent = String(new Date().getFullYear());
+      setTheme(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      applyLang((navigator.language || 'en').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en');
+      renderProjects();
+      runTerminal();
+      hydrate();
+
+    })();
+  </script>
+</body>
+
+</html>

@@ -660,6 +660,11 @@
       border-radius: 50%;
     }
 
+    /* light theme: --line is too faint over the pale background */
+    [data-theme="light"] .orbit-ring {
+      border-color: rgba(95, 91, 82, .5);
+    }
+
     .o1 { --tilt: 0deg;   --dur: 16s; --dir: normal;  --ph: 0s;      --bobdur: 5.2s; --bobph: 0s }
     .o2 { --tilt: 36deg;  --dur: 21s; --dir: reverse; --ph: -5.25s;  --bobdur: 6.1s; --bobph: -1.5s }
     .o3 { --tilt: 72deg;  --dur: 26s; --dir: normal;  --ph: -13s;    --bobdur: 7s;   --bobph: -3s }

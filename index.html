@@ -599,20 +599,13 @@
     /* Atom — DevOps tool icons orbiting a nucleus, beside the title */
     .hero-atom {
       position: absolute;
-      top: 30px;
-      right: clamp(-90px, calc(1140px - 100vw), -20px);
-      width: clamp(380px, 33vw, 480px);
+      top: 34px;
+      right: -110px;
+      width: 340px;
       aspect-ratio: 1;
       z-index: -1;
-      display: none;
       pointer-events: none;
       animation-delay: .55s;
-    }
-
-    @media (min-width:1040px) {
-      .hero-atom {
-        display: block
-      }
     }
 
     .atom {
@@ -620,6 +613,21 @@
       width: 100%;
       height: 100%;
       --squash: .38;
+      /* on small screens the atom sits behind the title text,
+         so it fades back to keep the text readable */
+      opacity: .5;
+    }
+
+    @media (min-width:1040px) {
+      .hero-atom {
+        top: 30px;
+        right: clamp(-90px, calc(1140px - 100vw), -20px);
+        width: clamp(380px, 33vw, 480px);
+      }
+
+      .atom {
+        opacity: 1
+      }
     }
 
     .nucleus {

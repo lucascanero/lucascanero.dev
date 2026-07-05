@@ -1170,6 +1170,114 @@
       gap: .9rem
     }
 
+    /* Email modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+    }
+
+    .modal[hidden] {
+      display: none
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(100%, 460px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.6rem 1.7rem 1.5rem;
+      animation: popIn .25s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(.97)
+      }
+    }
+
+    .modal-x {
+      position: absolute;
+      top: .55rem;
+      right: .65rem;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--text-2);
+      font-size: 1.25rem;
+      line-height: 1;
+      padding: .35rem;
+      border-radius: 8px;
+      transition: color .2s;
+    }
+
+    .modal-x:hover {
+      color: var(--accent)
+    }
+
+    .modal-title {
+      font-size: .8rem;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .email-row {
+      display: flex;
+      align-items: stretch;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+
+    .email-addr {
+      flex: 1 1 220px;
+      display: flex;
+      align-items: center;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .6rem .8rem;
+      user-select: all;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-btn {
+      padding: .6rem 1.15rem
+    }
+
+    .copy-btn.is-copied {
+      background: #3ecf8e;
+      border-color: #3ecf8e;
+      color: #06281a;
+    }
+
+    .mail-alt {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-size: .78rem;
+      color: var(--text-2);
+      transition: color .2s;
+    }
+
+    .mail-alt:hover {
+      color: var(--accent)
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--line);
@@ -1652,7 +1760,8 @@
         </header>
 
         <div class="contact-actions reveal">
-          <a class="btn btn-primary" href="mailto:lucas.canero14@gmail.com"><span class="glyph">@</span>Email</a>
+          <a class="btn btn-primary" id="emailBtn" href="mailto:lucas.canero14@gmail.com"><span
+              class="glyph">@</span>Email</a>
           <a class="btn" href="https://www.linkedin.com/in/lucascanero/" target="_blank" rel="noopener"><span
               class="glyph">in</span>LinkedIn</a>
           <a class="btn" href="https://github.com/lucascanero" target="_blank" rel="noopener"><span
@@ -1664,6 +1773,19 @@
       </div>
     </section>
   </main>
+
+  <div class="modal" id="emailModal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle">
+      <button class="modal-x" type="button" data-close aria-label="Close">×</button>
+      <p class="modal-title mono" id="emailModalTitle" data-i18n="mail.title">~/contact — email</p>
+      <div class="email-row">
+        <span class="email-addr mono" id="emailAddr">lucas.canero14@gmail.com</span>
+        <button class="btn btn-primary copy-btn" type="button" id="copyBtn"><span data-i18n="mail.copy">Copy</span></button>
+      </div>
+      <a class="mail-alt mono" href="mailto:lucas.canero14@gmail.com" data-i18n="mail.open">open in mail app ↗</a>
+    </div>
+  </div>
 
   <footer>
     <div class="container foot mono">
@@ -1724,6 +1846,11 @@
           'sk.cicd': "CI/CD & Automation", 'sk.obs': "Observability", 'sk.mm': "Multimedia & Design",
           'contact.h': "Let's build something.",
           'contact.sub': "Open to DevOps consulting and infrastructure work — the fastest ways to reach me:",
+          'mail.title': "~/contact — email",
+          'mail.copy': "Copy",
+          'mail.copied': "Copied ✓",
+          'mail.open': "open in mail app ↗",
+          'mail.close': "Close",
           'footer.made': "designed & built with ❤"
         },
         pt: {
@@ -1764,6 +1891,11 @@
           'sk.cicd': "CI/CD & Automação", 'sk.obs': "Observabilidade", 'sk.mm': "Multimédia & Design",
           'contact.h': "Vamos construir alguma coisa.",
           'contact.sub': "Disponível para consultoria DevOps e projetos de infraestrutura — as formas mais rápidas de me contactar:",
+          'mail.title': "~/contact — email",
+          'mail.copy': "Copiar",
+          'mail.copied': "Copiado ✓",
+          'mail.open': "abrir na app de email ↗",
+          'mail.close': "Fechar",
           'footer.made': "desenhado e construído com ❤"
         }
       };
@@ -1827,6 +1959,8 @@
         var md = $('meta[name="description"]');
         if (md) md.setAttribute('content', dict['meta.desc']);
         themeBtn.setAttribute('aria-label', dict['aria.theme']);
+        var mx = $('.modal-x');
+        if (mx) mx.setAttribute('aria-label', dict['mail.close']);
         $$('.lang-btn').forEach(function (b) {
           b.classList.toggle('is-active', b.getAttribute('data-lang') === l);
         });
@@ -2027,6 +2161,62 @@
             ticking = false;
           });
         }, { passive: true });
+      }
+
+      /* ---------------- Email modal ---------------- */
+      var emailModal = $('#emailModal');
+      var emailBtn = $('#emailBtn');
+      var copyBtn = $('#copyBtn');
+      var copyTimer = null;
+
+      function openEmailModal() {
+        emailModal.hidden = false;
+        d.body.style.overflow = 'hidden';
+        copyBtn.focus();
+      }
+      function closeEmailModal() {
+        emailModal.hidden = true;
+        d.body.style.overflow = '';
+        emailBtn.focus();
+      }
+      emailBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openEmailModal();
+      });
+      $$('[data-close]', emailModal).forEach(function (el) {
+        el.addEventListener('click', closeEmailModal);
+      });
+      d.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !emailModal.hidden) closeEmailModal();
+      });
+
+      function copiedFeedback() {
+        var span = $('span', copyBtn);
+        copyBtn.classList.add('is-copied');
+        span.textContent = I18N[lang]['mail.copied'];
+        if (copyTimer) clearTimeout(copyTimer);
+        copyTimer = setTimeout(function () {
+          copyBtn.classList.remove('is-copied');
+          span.textContent = I18N[lang]['mail.copy'];
+        }, 1800);
+      }
+      copyBtn.addEventListener('click', function () {
+        var addr = $('#emailAddr').textContent.trim();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr).then(copiedFeedback, function () { fallbackCopy(addr); });
+        } else {
+          fallbackCopy(addr);
+        }
+      });
+      function fallbackCopy(txt) {
+        var ta = d.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        d.body.appendChild(ta);
+        ta.select();
+        try { d.execCommand('copy'); copiedFeedback(); } catch (e) { /* nada a fazer */ }
+        d.body.removeChild(ta);
       }
 
       /* ---------------- Init ---------------- */

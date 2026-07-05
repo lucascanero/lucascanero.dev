@@ -243,22 +243,23 @@
       width: 100%
     }
 
-    /* Apps pill — link to apps.lucascanero.dev with live LED */
-    .nav-links .nav-apps {
+    /* Apps pill — link to the apps page with live LED; lives in
+       .nav-ctrl so it stays visible on mobile too */
+    .nav-apps {
       display: inline-flex;
       align-items: center;
       gap: .45rem;
+      font-size: .9rem;
+      color: var(--text-2);
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: .3rem .85rem;
+      white-space: nowrap;
       transition: color .2s, border-color .2s;
     }
 
-    .nav-links .nav-apps::after {
-      display: none
-    }
-
-    .nav-links .nav-apps:hover {
+    .nav-apps:hover {
+      color: var(--text);
       border-color: var(--accent)
     }
 
@@ -292,6 +293,34 @@
 
       .nav-ctrl {
         margin-left: 0
+      }
+    }
+
+    /* compress the nav on small screens so the Apps pill fits */
+    @media (max-width:560px) {
+      .nav-in {
+        gap: .8rem
+      }
+
+      .nav-ctrl {
+        gap: .5rem
+      }
+
+      .nav-apps {
+        font-size: .82rem;
+        padding: .24rem .62rem
+      }
+    }
+
+    @media (max-width:480px) {
+      .logo {
+        font-size: .85rem
+      }
+    }
+
+    @media (max-width:340px) {
+      .nav-apps {
+        display: none
       }
     }
 
@@ -1211,9 +1240,10 @@
         <a href="#projects" data-i18n="nav.proj">Projects</a>
         <a href="#skills" data-i18n="nav.skills">Skills</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a class="nav-apps" href="https://apps.lucascanero.dev" target="_blank" rel="noopener"><span class="live-dot" aria-hidden="true"></span>Apps</a>
       </nav>
       <div class="nav-ctrl">
+        <a class="nav-apps" href="https://apps.lucascanero.dev" target="_blank" rel="noopener"><span
+            class="live-dot" aria-hidden="true"></span>Apps</a>
         <div class="lang mono" role="group" aria-label="Language / Idioma">
           <button class="lang-btn" type="button" data-lang="en">EN</button>
           <span class="lang-sep" aria-hidden="true">/</span>

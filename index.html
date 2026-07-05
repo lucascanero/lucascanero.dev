@@ -243,6 +243,41 @@
       width: 100%
     }
 
+    /* Apps pill — link to apps.lucascanero.dev with live LED */
+    .nav-links .nav-apps {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .3rem .85rem;
+      transition: color .2s, border-color .2s;
+    }
+
+    .nav-links .nav-apps::after {
+      display: none
+    }
+
+    .nav-links .nav-apps:hover {
+      border-color: var(--accent)
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: #3ecf8e;
+      box-shadow: 0 0 8px rgba(62, 207, 142, .5);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      50% {
+        opacity: .45
+      }
+    }
+
     .nav-ctrl {
       display: flex;
       align-items: center;
@@ -1009,11 +1044,17 @@
       transform: translate(3px, -3px)
     }
 
+    .proj-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 2rem;
+      margin-top: 1.8rem;
+    }
+
     .proj-more {
       display: inline-flex;
       align-items: center;
       gap: .45rem;
-      margin-top: 1.8rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: .85rem;
       color: var(--accent)
@@ -1021,6 +1062,19 @@
 
     .proj-more:hover {
       text-shadow: 0 0 12px var(--accent-glow)
+    }
+
+    .proj-apps {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .45rem 1.05rem;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+
+    .proj-apps:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px var(--accent-dim);
+      transform: translateY(-1px);
     }
 
     /* Skills */
@@ -1157,6 +1211,7 @@
         <a href="#projects" data-i18n="nav.proj">Projects</a>
         <a href="#skills" data-i18n="nav.skills">Skills</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a class="nav-apps" href="https://apps.lucascanero.dev" target="_blank" rel="noopener"><span class="live-dot" aria-hidden="true"></span>Apps</a>
       </nav>
       <div class="nav-ctrl">
         <div class="lang mono" role="group" aria-label="Language / Idioma">
@@ -1449,8 +1504,12 @@
           </noscript>
         </div>
 
-        <a class="proj-more reveal" href="https://github.com/lucascanero?tab=repositories" target="_blank"
-          rel="noopener"><span data-i18n="proj.more">More on GitHub</span> ↗</a>
+        <div class="proj-links reveal">
+          <a class="proj-more proj-apps" href="apps/"><span class="live-dot" aria-hidden="true"></span><span
+              data-i18n="proj.apps">Apps running live</span> →</a>
+          <a class="proj-more" href="https://github.com/lucascanero?tab=repositories" target="_blank"
+            rel="noopener"><span data-i18n="proj.more">More on GitHub</span> ↗</a>
+        </div>
       </div>
     </section>
 
@@ -1621,6 +1680,7 @@
           'proj.sub': "Loaded live from the GitHub API — this section keeps itself up to date.",
           'proj.note': "GitHub API unreachable — showing cached info.",
           'proj.more': "More on GitHub",
+          'proj.apps': "Apps running live",
           'card.open': "open repository",
           'sk.cloud': "Cloud", 'sk.iac': "Infrastructure as Code", 'sk.cont': "Containers & Orchestration",
           'sk.cicd': "CI/CD & Automation", 'sk.obs': "Observability", 'sk.mm': "Multimedia & Design",
@@ -1660,6 +1720,7 @@
           'proj.sub': "Carregado em direto da API do GitHub — esta secção mantém-se atualizada sozinha.",
           'proj.note': "API do GitHub indisponível — a mostrar informação em cache.",
           'proj.more': "Mais no GitHub",
+          'proj.apps': "Apps em produção",
           'card.open': "abrir repositório",
           'sk.cloud': "Cloud", 'sk.iac': "Infraestrutura como Código", 'sk.cont': "Containers & Orquestração",
           'sk.cicd': "CI/CD & Automação", 'sk.obs': "Observabilidade", 'sk.mm': "Multimédia & Design",
